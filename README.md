@@ -41,7 +41,6 @@ redis_conn = get_redis_conn(host="localhost", port=6379, db="0")
 
 stream_name = "test-kinesis-stream"
 region = "eu-west-1"
-redis_state_key = "default-127.0.0.1-6379-0"  # <key-host-port-db>
 
 kinesis_consumer = KinesisConsumer(stream_name, region, redis_conn)
 record_queue_consumer = RecordQueueConsumer(stream_name, redis_conn)
