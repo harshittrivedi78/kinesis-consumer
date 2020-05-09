@@ -30,6 +30,10 @@ This will install boto3 >= 1.13.5 and kinesis-python >= 0.2.1 and redis >= 3.5.0
 There is two consumer which has to be run parallelly one is kinesis consumer and second is records queue consumer
 (redis). I have added a example.py file in this code base which can be used to check and test the code.
 
+Here you can scale record queue consumer as per your per second message quantum. But kinesis consumer would be only 
+one under which one process per shard will be running. Every process will be consuming the messages from shard which 
+is assigned to it.
+
 ```python
 import threading
 
@@ -62,3 +66,6 @@ class RecordQueueConsumer(BaseRecordQueueConsumer):
         # your code
         print(message)
 ```
+
+# TODO:
+Horizontal scaling for kinesis consumer.
